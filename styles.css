@@ -1,0 +1,196 @@
+/* Mobile-first, clean UI */
+:root {
+  --bg: #0b0d12;
+  --panel: #11151c;
+  --surface: #151a22;
+  --text: #dbe4ff;
+  --muted: #7f8ea3;
+  --primary: #6ea8fe;
+  --accent: #85f4ff;
+  --grid: #1c2430;
+  --btn: #1a2330;
+  --btnActive: #243144;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(1200px 600px at 70% -50%, rgba(108,99,255,.15), transparent),
+              radial-gradient(800px 400px at -10% 120%, rgba(0,180,216,.12), transparent),
+              var(--bg);
+  color: var(--text);
+}
+
+.wrap {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+.brand span {
+  color: var(--accent);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.pill {
+  background: var(--surface);
+  border: 1px solid #213044;
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+.layout {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  padding: 12px;
+}
+
+/* ==== HUD: stats + mini panels (Hold/Next) ==== */
+.hud {
+  display: grid;
+  /* 3 kolom untuk stat, 2 kolom kecil untuk Hold/Next */
+  grid-template-columns: repeat(3, 1fr) 96px 96px;
+  gap: 10px;
+  align-items: start;
+}
+
+.card.stat {
+  background: var(--surface);
+  border: 1px solid #213044;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.card .label { font-size: 12px; color: var(--muted); }
+.card .value { font-size: 20px; font-weight: 800; margin-top: 2px; }
+
+/* Panel kecil untuk Hold & Next — tetap pakai HTML lama */
+.panel {
+  /* override aturan lama yang span 3 kolom */
+  grid-column: auto !important;
+  background: var(--surface);
+  border: 1px solid #213044;
+  border-radius: 10px;
+  padding: 6px;
+  width: 96px;           /* kecil */
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.panel-head { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.mini {
+  width: 100%;
+  height: auto;
+  background: var(--panel);
+  border: 1px solid #213044;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== Stage / Canvas ===== */
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 8px 0;
+}
+#game {
+  width: min(92vw, 420px);
+  height: calc(min(92vw, 420px) * 2);
+  background: var(--panel);
+  border: 1px solid #213044;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  image-rendering: pixelated;
+}
+
+/* ===== Overlay ===== */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(11,13,18,.55);
+  backdrop-filter: blur(2px);
+}
+.overlay.hidden { display: none; }
+.overlay .box {
+  background: var(--surface);
+  border: 1px solid #213044;
+  border-radius: 14px;
+  padding: 16px;
+  width: 88%;
+  max-width: 440px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.overlay h2 { margin: 8px 0; }
+.overlay .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.cta {
+  background: var(--primary);
+  color: #0b0d12;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 800;
+}
+.cta.outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #2a3548;
+}
+
+/* ===== Controls ===== */
+.controls {
+  position: sticky;
+  bottom: 0;
+  padding: 8px 12px 14px;
+  background: linear-gradient(0deg, rgba(11,13,18,.8), rgba(11,13,18,.3));
+  backdrop-filter: blur(6px);
+  border-top: 1px solid #1a2330;
+}
+.controls .row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.btn {
+  padding: 14px 0;
+  background: var(--btn);
+  color: var(--text);
+  font-weight: 800;
+  border: 1px solid #233249;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.btn:active { background: var(--btnActive); }
+
+/* ===== Desktop ===== */
+@media (min-width: 860px) {
+  .layout {
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+  /* biar panel kecil tetap di satu baris */
+  .hud { grid-template-columns: repeat(3, 1fr) 110px 110px; }
+  .panel { width: 110px; }
+  .controls { position: static; background: transparent; border: 0; padding-top: 0; }
+}
