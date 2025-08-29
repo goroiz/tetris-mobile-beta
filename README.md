@@ -9,7 +9,7 @@ Support **touch controls** (tombol besar), **keyboard**, **hold**, **next queue*
 
 ## 🚀 Cara Jalanin
 ### Lokal
-Cukup buka `https://goroiz.github.io/tetris-mobile-beta/` di browser (Chrome/Firefox/Edge/Safari).  
+Cukup buka https://goroiz.github.io/tetris-mobile-beta/ di browser (Chrome/Firefox/Edge/Safari).  
 Tips mobile: *Add to Home Screen* biar full-screen.
 
 ---
