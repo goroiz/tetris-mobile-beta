@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tetris Mobile — Ganbi</title>
+  <meta name="description" content="Tetris yang smooth dan mobile-friendly. Tap controls, keyboard, responsive UI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">Tetris<span>•mobile</span></div>
+      <button id="btnPause" class="pill">Pause</button>
+    </header>
+
+    <main class="layout">
+      <section class="hud">
+        <div class="card stat">
+          <div class="label">Score</div>
+          <div id="score" class="value">0</div>
+        </div>
+        <div class="card stat">
+          <div class="label">Level</div>
+          <div id="level" class="value">1</div>
+        </div>
+        <div class="card stat">
+          <div class="label">Lines</div>
+          <div id="lines" class="value">0</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">Hold</div>
+          <canvas id="hold" width="120" height="96" class="mini"></canvas>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">Next</div>
+          <canvas id="next" width="120" height="240" class="mini"></canvas>
+        </div>
+      </section>
+
+      <section class="stage">
+        <canvas id="game" width="240" height="480" aria-label="Game board"></canvas>
+        <div id="overlay" class="overlay hidden">
+          <div class="box">
+            <h2 id="overlayTitle">Paused</h2>
+            <p id="overlaySubtitle">Tap resume to continue.</p>
+            <div class="row">
+              <button id="btnResume" class="cta">Resume</button>
+              <button id="btnRestart" class="cta outline">Restart</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="controls">
+      <div class="row">
+        <button class="btn" data-action="left" aria-label="Move Left">◀</button>
+        <button class="btn" data-action="down" aria-label="Soft Drop">▼</button>
+        <button class="btn" data-action="right" aria-label="Move Right">▶</button>
+      </div>
+      <div class="row">
+        <button class="btn" data-action="rotate" aria-label="Rotate">⟳</button>
+        <button class="btn" data-action="hard" aria-label="Hard Drop">⤓</button>
+        <button class="btn" data-action="hold" aria-label="Hold">H</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
